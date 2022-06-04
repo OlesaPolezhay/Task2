@@ -1,0 +1,172 @@
+1.Ask user to enter the number of month. Read the value and write the amount of days in this month (create array with amount days of each month).
+package ДЗ2;
+
+import java.util.Scanner;
+
+public class task1 {
+    public static void main(String[] args) {
+        System.out.println("Enter manth ");
+        Scanner scan = new Scanner(System.in);
+        int number_Manth = scan.nextInt();
+        int []mas = {31,28,31,30,31,30,31,30,31,30,31,30};
+        System.out.println("in the " + number_Manth + " manth " + mas[number_Manth-1] + " days");
+        scan.close();
+    }
+}
+
+
+2.Enter 10 integer numbers. Calculate the sum of first 5 elements if they are positive or product of last 5 element in the other case.
+package ДЗ2;
+
+import java.util.Scanner;
+
+public class task2 {
+    public static void main(String[] args) {
+        System.out.println("Enter data ");
+        Scanner scan = new Scanner(System.in);
+        
+        int []mas = new int[10];
+
+        for(int i = 0; i < 10; i++){
+            mas[i] = scan.nextInt();
+        }
+        int sum = 0;
+         boolean check = true;
+         for(int i = 0; i < 5; i++){
+            sum += mas[i];
+             if(mas[i] <= 0){
+                check =false;    
+             }
+         }
+        if(check == true){
+            System.out.println("Result "+sum);
+        }
+        else{
+            int product = 1;
+            for(int i = 5; i < 10; i++){
+                product *= mas[i];
+            }
+            System.out.println("Result " + product);
+        }
+        scan.close();
+    }
+}
+ 
+3.Enter 5 integer numbers. Find
+•position of second positive number;
+•minimum and its position in the array.
+package ДЗ2;
+
+import java.util.Scanner;
+
+public class task3 {
+    public static void main(String[] args) {
+        System.out.println("Enter data ");
+        Scanner scan = new Scanner(System.in);
+        
+        int []mas = new int[5];
+     
+        for(int i = 0; i < 5; i++){
+            mas[i] = scan.nextInt();
+        }
+        int second_positiv = 0;
+        int second_positi_position = 0;
+        boolean check = false;
+        
+        for(int i = 0; i < 5; i++){
+            if( check == true && mas[i] > 0){
+                second_positiv = mas[i];
+                second_positi_position =i;
+                break;
+            } 
+            if(mas[i] > 0){
+                check = true;
+            }
+                 
+        }
+
+        System.out.println("second_positiv " + second_positiv);
+        System.out.println("second positiv position " + (second_positi_position+1));
+
+        int min = mas[0];
+        int position = 0;;
+        for(int i =0; i < 5 ; i++){
+            if(mas[i] < min){
+                min = mas[i];
+                position = i;
+            }
+        }
+        System.out.println("minimum " + min);
+        System.out.println("position " + (position+1));
+        scan.close();
+    }
+}
+ 
+4.Organize entering integers until the first negative number. Count the product of all entered even numbers.
+package ДЗ2;
+
+import java.util.Scanner;
+
+public class task4 {
+    public static void main(String[] args) {
+        System.out.println("Enter data ");
+        Scanner scan = new Scanner(System.in);
+        int result = 1;
+        int a = scan.nextInt();
+        while (a > 0){
+            if(a % 2 == 0){
+                result *=a;
+            }
+            a = scan.nextInt();
+        }
+        System.out.println("Result = " + result);
+        scan.close();
+    }
+}
+ 
+5.Create class Car with fields type, year of production and engine capacity. Create and initialize four instances of class Car. Display cars
+•certain model year  (enter year in the console);
+•ordered by the field year.
+package ДЗ2;
+import java.util.Scanner;
+
+class Car {
+    String type;
+    int yearOfProduction;
+    double engineVolume;
+
+    
+public Car(String type, int yearOfProduction, double engineVolume) {
+        this.type = type;
+        this.yearOfProduction = yearOfProduction;
+        this.engineVolume = engineVolume;
+    }
+public static void analyse(double yearToFindCar,Car [] a){
+for(int i =0; i < 4; i++){
+    if(a[i].yearOfProduction == yearToFindCar){
+        System.out.println( a[i].toString());
+    }
+}
+}
+@Override
+public String toString() {
+    return "Car [engineVolume=" + engineVolume + ", type=" + type + ", yearOfProduction=" + yearOfProduction + "]";
+}
+}
+public class task5 {
+    public static void main(String[] args) {
+        var scan = new Scanner(System.in);
+        int yearToFindCar = scan.nextInt();
+        Car [] mas = new Car[4];
+        mas[0] = new Car("automatic machine", 2019, 1.5);
+        mas[1] = new Car("all-wheel drive", 2017,1.9 );
+        mas[2] = new Car("automatic machine", 1984, 2.2);
+        mas[3] = new Car("all-wheel drive", 2019, 1);
+        Car.analyse(yearToFindCar, mas);
+        scan.close();
+    } 
+}
+
+ 
+
+
